@@ -24,6 +24,8 @@ while len(guessed_states) < len(states_list):
             for state in states_list:
                 if state not in guessed_states:
                     missing_states.append(state)
+            missing_states_data_frame = pandas.DataFrame(missing_states)
+            missing_states_data_frame.to_csv("missing_states.csv")
             break
     if answer_state in states_list:
         guessed_states.append(answer_state)
