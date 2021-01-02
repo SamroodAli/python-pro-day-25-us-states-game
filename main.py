@@ -19,6 +19,12 @@ while len(guessed_states) < len(states_list):
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="What's a state's name")
     if answer_state is not None:
         answer_state = answer_state.title()
+        if answer_state == "Exit":
+            missing_states = []
+            for state in states_list:
+                if state not in guessed_states:
+                    missing_states.append(state)
+            break
     if answer_state in states_list:
         guessed_states.append(answer_state)
         state = data[data.state == answer_state]
