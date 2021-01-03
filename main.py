@@ -20,10 +20,7 @@ while len(guessed_states) < len(states_list):
     if answer_state is not None:
         answer_state = answer_state.title()
         if answer_state == "Exit":
-            missing_states = []
-            for state in states_list:
-                if state not in guessed_states:
-                    missing_states.append(state)
+            missing_states = [state for state in states_list if state not in guessed_states]
             missing_states_data_frame = pandas.DataFrame(missing_states)
             missing_states_data_frame.to_csv("missing_states.csv")
             break
